@@ -34,8 +34,6 @@ export default function PaginaInicial() {
   //const username = 'peas';
   const [username, setUserName] = React.useState('')
   const roteamento = useRouter()
-  const [usuarioValido, setUsuarioValido] = React.useState(false)
-  const [usuarioImagem, setUsuarioImagem] = React.useState('')
 
   return (
     <>
@@ -92,15 +90,6 @@ export default function PaginaInicial() {
               onChange={function(event) {
                 const valor = event.target.value
                 setUserName(valor)
-                setUsuarioImagem('')
-                setUsuarioValido(false)
-                
-                if(valor.length >= 2) {
-                  console.log(username)
-                  setUsuarioImagem(`https://github.com/${username}.png`)
-                  setUsuarioValido(true)
-                }
-
             }}
             />
             <Button
@@ -113,7 +102,6 @@ export default function PaginaInicial() {
                 mainColorLight: appConfig.theme.colors.primary[400],
                 mainColorStrong: appConfig.theme.colors.primary[600],
               }}
-              disabled={!usuarioValido}
             />
           </Box>
           {/* Formulário */}
@@ -140,8 +128,7 @@ export default function PaginaInicial() {
                 borderRadius: '50%',
                 marginBottom: '16px',
               }}
-              //src={`https://github.com/${username}.png`}
-              src={usuarioImagem}              
+              src={`https://github.com/${username}.png`}
             />
             <Text
               variant="body4"
